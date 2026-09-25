@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     nombre      VARCHAR(45) NOT NULL,
     apellido    VARCHAR(45) NOT NULL,
     email       VARCHAR(50) UNIQUE NOT NULL,
-    contrasena  VARCHAR(255) NOT NULL,          -- 👈 ampliado
+    contrasena  VARCHAR(255) NOT NULL,
     created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at  DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
