@@ -28,3 +28,30 @@ class Seguidores:
         """
         
         return connectToMySQL("esquema_seguidores").query_db(query)
+
+    @classmethod
+    def existe(cls, data):
+        query = """
+        SELECT 
+            id
+        FROM seguidores
+        WHERE usuario_id = %(usuario_id)s
+        AND seguidor_id = %(seguidor_id)s;
+        """
+        
+        resultado = connectToMySQL("esquema_seguidores").query_db(query, data)
+        return bool(resultado)
+    
+    @classmethod
+    def seguir(cls, data):
+        query = """
+        INSERT INTO seguidores(
+            usuario_id,
+            seguidor_id
+        )VALUES(
+            %(usuario_id)s,
+            %(seguidor_id)s
+        )
+        """
+        
+        return connectToMySQL("esquema_seguidores").query_db(query, data)

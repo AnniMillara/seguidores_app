@@ -22,10 +22,10 @@ class Usuarios:
             created_at,
             updated_at
         FROM usuarios
-        ORDERED BY id_usuario;
+        ORDER BY id_usuario;
         """
         
-        resultados = connectToMySQL("esquema_seguidores").query(query)
+        resultados = connectToMySQL("esquema_seguidores").query_db(query)
         usuarios = []
         for user in resultados:
             usuarios.append(cls(user))
@@ -42,12 +42,12 @@ class Usuarios:
             contrasena,
             email,
             created_at,
-            updates_at
+            updated_at
         FROM usuarios WHERE id_usuario = %(id_usuario)s;
         """
         
         data = {"id_usuario" : id}
-        resultados = connectToMySQL("esquema_seguidores").query(query, data)
+        resultados = connectToMySQL("esquema_seguidores").query_db(query, data)
         
         if resultados:
             return cls(resultados[0])
@@ -61,8 +61,8 @@ class Usuarios:
             nombre,
             apellido,
             contrasena,
-            email,
-        VALUES(
+            email
+        )VALUES(
             %(nombre)s,
             %(apellido)s,
             %(contrasena)s,
@@ -70,4 +70,4 @@ class Usuarios:
         )
         """
         
-        return connectToMySQL("esquema_seguidores".query(query, data))
+        return connectToMySQL("esquema_seguidores").query_db(query, data)

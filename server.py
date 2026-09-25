@@ -9,7 +9,7 @@ from flask_app import app
 # utilizando la instancia "app".
 # ==========================================================
 
-from flask_app.controllers import canciones
+from flask_app.controllers import usuarios
 
 # EJECUTAR SERVIDOR
 if __name__ == "__main__":
